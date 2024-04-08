@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">SPCA4</string>
+
+    <string-array name="category">
+        <item>Top</item>
+        <item>Bottom</item>
+        <item>Shoes</item>
+        <item>Underwear</item>
+    </string-array>
+</resources>

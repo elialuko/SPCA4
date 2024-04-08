@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "791776785016",
+    "project_id": "spca4-80db6",
+    "storage_bucket": "spca4-80db6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:791776785016:android:e1cc3e083e096862ef338d",
+        "android_client_info": {
+          "package_name": "com.example.spca4"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAhupzYiBGHI7RGDKKUA7kBfpny2bZKzdA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

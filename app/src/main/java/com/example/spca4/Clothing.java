@@ -1,17 +1,18 @@
 package com.example.spca4;
 
 public class Clothing {
-    String title, manufacturer, price, category;
+    String title, manufacturer, price, category, quantity;
 
     private Clothing(){
 
     }
 
-    public Clothing(String title, String manufacturer, String price, String category) {
+    public Clothing(String title, String manufacturer, String price, String category, String quantity) {
         this.title = title;
         this.manufacturer = manufacturer;
         this.price = price;
         this.category = category;
+        this.quantity = quantity;
     }
 
     public String getTitle() {
@@ -44,5 +45,13 @@ public class Clothing {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public String getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(String quantity) {
+        this.quantity = quantity;
     }
 }

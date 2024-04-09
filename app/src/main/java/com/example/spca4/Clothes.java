@@ -21,7 +21,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Clothes extends AppCompatActivity {
-    EditText manufacturer, price, title;
+    EditText manufacturer, price, title, quantity;
     Button add;
     String category;
 
@@ -32,6 +32,7 @@ public class Clothes extends AppCompatActivity {
         manufacturer = findViewById(R.id.manufacturer);
         title = findViewById(R.id.title);
         price = findViewById(R.id.price);
+        quantity = findViewById(R.id.quantity);
         add = findViewById(R.id.btnAdd);
 
         Spinner mySpinner = findViewById(R.id.spinner);
@@ -46,6 +47,7 @@ public class Clothes extends AppCompatActivity {
                 String textManufacturer = manufacturer.getText().toString();
                 String textTitle = title.getText().toString();
                 String textPrice = price.getText().toString();
+                String textQuantity = quantity.getText().toString();
 
                 if (TextUtils.isEmpty(textManufacturer)){
                     Toast.makeText(Clothes.this, "Please Enter a Manufacturer", Toast.LENGTH_LONG).show();
@@ -65,6 +67,7 @@ public class Clothes extends AppCompatActivity {
                     clothesData.put("manufacturer",textManufacturer);
                     clothesData.put("price",textPrice);
                     clothesData.put("category",category);
+                    clothesData.put("quantity",textQuantity);
                     clothesRef.child(clothesID).setValue(clothesData);
 
 

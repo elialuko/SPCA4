@@ -7,6 +7,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.SearchView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -25,6 +28,9 @@ public class List extends AppCompatActivity {
     FirebaseAuth auth;
     FirebaseDatabase database;
     MyAdapter adapter;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,5 +64,40 @@ public class List extends AppCompatActivity {
 
             }
         });
+
+
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.search, menu);
+        MenuItem item = menu.findItem(R.id.search);
+        SearchView searchView = (SearchView) item.getActionView();
+        searchView.setQueryHint("Search Shop Items");
+        MenuItem item1 = menu.findItem(R.id.search);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                txtSearch(query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                txtSearch(newText);
+                return false;
+            }
+        });
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    private void txtSearch(String str) {
+        ArrayList<Clothing> filteredList = new ArrayList<>();
+        for (Clothing clothing : list) {
+            if (clothing.getTitle().toLowerCase().contains(str.toLowerCase())) {
+                filteredList.add(clothing);
+            }
+            adapter.filterList(filteredList);
+        }
     }
 }

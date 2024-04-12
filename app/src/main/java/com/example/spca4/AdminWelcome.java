@@ -9,15 +9,17 @@ import android.view.View;
 
 public class AdminWelcome extends AppCompatActivity implements View.OnClickListener {
 
-    CardView clothes;
+    CardView clothes, discount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_welcome);
         clothes = findViewById(R.id.clothes_card);
+        discount = findViewById(R.id.discount_card);
 
         clothes.setOnClickListener(this);
+        discount.setOnClickListener(this);
     }
 
     @Override
@@ -28,6 +30,10 @@ public class AdminWelcome extends AppCompatActivity implements View.OnClickListe
         switch (tag) {
             case "clothes":
                 i = new Intent(AdminWelcome.this, Clothes.class);
+                startActivity(i);
+                break;
+            case "discount":
+                i = new Intent(AdminWelcome.this, AdminDiscount.class);
                 startActivity(i);
                 break;
         }

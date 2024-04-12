@@ -18,6 +18,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -124,6 +125,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
 
         // Display success message or perform any other action
         Toast.makeText(context, "Clothing saved to Basket", Toast.LENGTH_SHORT).show();
+    }
+
+    public void filterList(ArrayList<Clothing> filteredList) {
+        list = filteredList;
+        notifyDataSetChanged();
     }
 
 }

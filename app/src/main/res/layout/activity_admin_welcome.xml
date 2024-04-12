@@ -55,8 +55,8 @@
 
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/booking_card"
-            android:tag="booking"
+            android:id="@+id/discount_card"
+            android:tag="discount"
             android:foreground="?android:attr/selectableItemBackground"
             android:clickable="true"
             android:layout_width="160dp"
@@ -79,7 +79,7 @@
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
                     android:layout_marginTop="10dp"
-                    android:text="Bookings"/>
+                    android:text="Discount"/>
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
@@ -89,7 +89,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Book a Trip"
+                    android:text="Add Discount Codes"
                     android:padding="5dp"
                     android:textColor="@android:color/darker_gray"/>
 

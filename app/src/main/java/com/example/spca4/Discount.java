@@ -57,6 +57,7 @@ public class Discount extends AppCompatActivity {
                         if (codeMatch) {
                             // Code match found
                             Toast.makeText(Discount.this, "Code applied successfully", Toast.LENGTH_SHORT).show();
+                            code.setText("");
                         } else {
                             // Code not found
                             Toast.makeText(Discount.this, "Invalid code", Toast.LENGTH_SHORT).show();
@@ -75,7 +76,7 @@ public class Discount extends AppCompatActivity {
         btnContinue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(Discount.this, Shipping.class);
+                Intent i = new Intent(Discount.this, ShippingDetails.class);
                 startActivity(i);
             }
         });

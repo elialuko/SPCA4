@@ -60,7 +60,7 @@ public class Shipping extends AppCompatActivity {
                     shippingData.put("eircode",txtEircode);
                     shippingRef.child(shippingID).setValue(shippingData);
                     Toast.makeText(Shipping.this, "Address Saved", Toast.LENGTH_LONG).show();
-                    Intent i = new Intent(Shipping.this, Payment.class);
+                    Intent i = new Intent(Shipping.this, Welcome.class);
                     startActivity(i);
                 }
             }

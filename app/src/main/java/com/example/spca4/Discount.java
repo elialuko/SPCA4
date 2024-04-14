@@ -10,6 +10,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.spca4.Interface.ApplyDiscountCommand;
+import com.example.spca4.Interface.DiscountCommand;
+import com.example.spca4.Interface.InvalidCodeCommand;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -21,6 +24,18 @@ public class Discount extends AppCompatActivity {
     Button apply, btnContinue;
     FirebaseDatabase database;
 
+    private void executeCommand(DiscountCommand command) {
+        command.execute();
+    }
+
+    public void applyDiscount() {
+        Toast.makeText(this, "Code applied successfully", Toast.LENGTH_SHORT).show();
+        code.setText("");
+    }
+
+    public void displayInvalidCodeMessage() {
+        Toast.makeText(this, "Invalid code", Toast.LENGTH_SHORT).show();
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,12 +70,10 @@ public class Discount extends AppCompatActivity {
                             }
                         }
                         if (codeMatch) {
-                            // Code match found
-                            Toast.makeText(Discount.this, "Code applied successfully", Toast.LENGTH_SHORT).show();
-                            code.setText("");
+                            executeCommand(new ApplyDiscountCommand(Discount.this));
                         } else {
                             // Code not found
-                            Toast.makeText(Discount.this, "Invalid code", Toast.LENGTH_SHORT).show();
+                            executeCommand(new InvalidCodeCommand(Discount.this));
                         }
                     }
 

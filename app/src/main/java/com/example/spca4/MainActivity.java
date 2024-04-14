@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -37,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         password = findViewById(R.id.inputPassword);
         createNew= findViewById(R.id.newAccount);
         loginB= findViewById(R.id.btnLogin);
+
         createNew.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

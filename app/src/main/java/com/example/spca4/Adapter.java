@@ -24,7 +24,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder>{
@@ -36,8 +35,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder>{
         this.context = context;
         this.list = list;
     }
-
-
 
     @NonNull
     @Override

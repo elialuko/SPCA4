@@ -11,8 +11,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.SearchView;
 
+import com.example.spca4.Interface.CardFactory;
+import com.example.spca4.Interface.ClothesCardFactory;
+
 public class Welcome extends AppCompatActivity implements View.OnClickListener{
     CardView clothes, basket;
+    CardFactory cardFactory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +24,7 @@ public class Welcome extends AppCompatActivity implements View.OnClickListener{
         setContentView(R.layout.activity_welcome);
         clothes = findViewById(R.id.clothes_card);
         basket = findViewById(R.id.basket_card);
+        cardFactory = new ClothesCardFactory();
 
         clothes.setOnClickListener(this);
         basket.setOnClickListener(this);
@@ -30,14 +35,14 @@ public class Welcome extends AppCompatActivity implements View.OnClickListener{
         Intent i;
         String tag = (String) v.getTag();
 
-        switch (tag) {
-            case "clothes":
-                i = new Intent(Welcome.this, List.class);
-                startActivity(i);
-                break;
-            case "basket" : i = new Intent(Welcome.this, Checkout.class);
-                startActivity(i);
-                break;
+        if (v.getId() == R.id.clothes_card) {
+            CardView clothesCard = cardFactory.createCard(Welcome.this);
+            i = new Intent(Welcome.this, List.class);
+            startActivity(i);
+        } else if (v.getId() == R.id.basket_card) {
+            CardView basketCard = cardFactory.createCard(Welcome.this);
+            i = new Intent(Welcome.this, Checkout.class);
+            startActivity(i);
         }
     }
 

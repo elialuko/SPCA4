@@ -33,7 +33,7 @@ public class ShippingDetails extends AppCompatActivity {
 
         FirebaseAuth auth = FirebaseAuth.getInstance();
         FirebaseUser firebaseUser = auth.getCurrentUser();
-        DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid()).child("Address");
+        DatabaseReference userRef = FirebaseDatabaseSingleton.getInstance().getReference("Users").child(firebaseUser.getUid()).child("Address");
 
         userRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

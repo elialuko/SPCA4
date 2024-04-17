@@ -10,9 +10,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.example.spca4.Interface.CardFactory;
+import com.example.spca4.Interface.ClothesCardFactory;
+
 public class AdminWelcome extends AppCompatActivity implements View.OnClickListener {
 
     CardView clothes, discount, customer, view;
+    CardFactory cardFactory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +26,7 @@ public class AdminWelcome extends AppCompatActivity implements View.OnClickListe
         discount = findViewById(R.id.discount_card);
         customer = findViewById(R.id.customer_card);
         view = findViewById(R.id.view_card);
+        cardFactory = new ClothesCardFactory();
 
         clothes.setOnClickListener(this);
         discount.setOnClickListener(this);
@@ -34,23 +39,22 @@ public class AdminWelcome extends AppCompatActivity implements View.OnClickListe
         Intent i;
         String tag = (String) v.getTag();
 
-        switch (tag) {
-            case "clothes":
-                i = new Intent(AdminWelcome.this, Clothes.class);
-                startActivity(i);
-                break;
-            case "discount":
-                i = new Intent(AdminWelcome.this, AdminDiscount.class);
-                startActivity(i);
-                break;
-            case "customer":
-                i = new Intent(AdminWelcome.this, ViewCustomers.class);
-                startActivity(i);
-                break;
-            case "view":
-                i = new Intent(AdminWelcome.this, List.class);
-                startActivity(i);
-                break;
+        if (v.getId() == R.id.clothes_card) {
+            CardView clothesCard = cardFactory.createCard(AdminWelcome.this);
+            i = new Intent(AdminWelcome.this, Clothes.class);
+            startActivity(i);
+        } else if (v.getId() == R.id.discount_card) {
+            CardView basketCard = cardFactory.createCard(AdminWelcome.this);
+            i = new Intent(AdminWelcome.this, AdminDiscount.class);
+            startActivity(i);
+        }else if (v.getId() == R.id.customer_card) {
+            CardView basketCard = cardFactory.createCard(AdminWelcome.this);
+            i = new Intent(AdminWelcome.this, ViewCustomers.class);
+            startActivity(i);
+        }else if (v.getId() == R.id.view_card) {
+            CardView basketCard = cardFactory.createCard(AdminWelcome.this);
+            i = new Intent(AdminWelcome.this, List.class);
+            startActivity(i);
         }
     }
 

@@ -78,7 +78,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle("Clothing Details");
 
-        // Set the dialog message using clothing details
+
         String message = "Category: " + clothing.getCategory() + "\n" +
                 "Title: " + clothing.getTitle() + "\n" +
                 "Manufacturer: " + clothing.getManufacturer() + "\n" +
@@ -87,30 +87,29 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
 
         builder.setMessage(message);
 
-        // Add Save button to save the clothing details
+
         builder.setPositiveButton("Save", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                // Save clothing details to Checkout under current user
+
                 saveToCheckout(clothing);
             }
         });
 
-        // Add Close button to close the dialog
+
         builder.setNegativeButton("Close", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                // Do nothing, just close the dialog
+
             }
         });
 
-        // Create and show the dialog
+
         AlertDialog dialog = builder.create();
         dialog.show();
     }
 
     private void saveToCheckout(Clothing clothing) {
-        // Get current user ID
         FirebaseAuth auth = FirebaseAuth.getInstance();
         FirebaseUser firebaseUser = auth.getCurrentUser();
         DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
@@ -123,7 +122,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
         basketData.put("price",clothing.getPrice());
         basketRef.child(basketID).setValue(basketData);
 
-        // Display success message or perform any other action
         Toast.makeText(context, "Clothing saved to Basket", Toast.LENGTH_SHORT).show();
     }
 

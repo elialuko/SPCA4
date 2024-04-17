@@ -90,7 +90,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder>{
         builder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                // Save clothing details to Checkout under current user
                 deleteFromBasket(basket);
             }
         });
@@ -98,7 +97,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder>{
         builder.setNegativeButton("Close", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                // Do nothing, just close the dialog
+
             }
         });
 
@@ -114,32 +113,27 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder>{
         DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
         DatabaseReference basketRef = userRef.child("Basket");
 
-        // Query to find the item with matching category
+
         Query query = basketRef.orderByChild("category").equalTo(basket.getCategory());
 
-        // Execute the query to get the matching items
+
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    // Check if the snapshot matches all other criteria
                     Basket basketItem = snapshot.getValue(Basket.class);
                     if (basketItem.getTitle().equals(basket.getTitle()) &&
                             basketItem.getManufacturer().equals(basket.getManufacturer()) &&
                             basketItem.getPrice().equals(basket.getPrice())) {
 
-                        // Get the unique identifier (key) of the basket item
                         String basketItemId = snapshot.getKey();
 
-                        // Reference to the specific item in the basket under current user
                         DatabaseReference basketItemRef = basketRef.child(basketItemId);
 
-                        // Remove the item from the database
                         basketItemRef.removeValue()
                                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void aVoid) {
-                                        // Item successfully deleted
                                         Toast.makeText(context, "Item deleted from basket", Toast.LENGTH_SHORT).show();
                                     }
                                 })

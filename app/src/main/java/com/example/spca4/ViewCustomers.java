@@ -40,17 +40,14 @@ public class ViewCustomers extends AppCompatActivity {
                 list.clear();
                 for (DataSnapshot userSnapshot : snapshot.getChildren()) {
                     boolean isAdmin = false;
-                    // Check if the user has the "admin" code in their "Codes" node
                     DataSnapshot codesSnapshot = userSnapshot.child("Codes");
                     for (DataSnapshot codeSnapshot : codesSnapshot.getChildren()) {
                         String code = codeSnapshot.child("code").getValue(String.class);
                         if (code != null && code.equals("admin")) {
-                            // User has "code: admin"
                             isAdmin = true;
                             break;
                         }
                     }
-                    // Add the user to the list if they don't have "code: admin"
                     if (!isAdmin) {
                         Users user = userSnapshot.getValue(Users.class);
                         Log.d("FirebaseData", "User: " + user.toString());

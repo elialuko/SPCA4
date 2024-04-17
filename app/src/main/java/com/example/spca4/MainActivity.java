@@ -80,7 +80,6 @@ public class MainActivity extends AppCompatActivity {
                                 Intent intent = new Intent(MainActivity.this, AdminWelcome.class);
                                 startActivity(intent);
                             }else {
-                                // User is not admin, navigate to WelcomeActivity
                                 Intent intent = new Intent(MainActivity.this, Welcome.class);
                                 startActivity(intent);
                             }
@@ -88,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError databaseError) {
-                            // Handle the error
+
                         }
                     });
                 }else{

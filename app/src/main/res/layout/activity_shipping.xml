@@ -114,7 +114,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="PAYMENT"
+        android:text="FINISH SIGN UP"
         android:background="@drawable/input_bg"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="@+id/eircode"

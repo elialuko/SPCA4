@@ -65,14 +65,12 @@ public class Discount extends AppCompatActivity {
                             }
                         }
                             if (codeMatch) {
-                                // Code match found
                                 break;
                             }
                         }
                         if (codeMatch) {
                             executeCommand(new ApplyDiscountCommand(Discount.this));
                         } else {
-                            // Code not found
                             executeCommand(new InvalidCodeCommand(Discount.this));
                         }
                     }

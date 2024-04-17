@@ -140,7 +140,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder>{
                                 .addOnFailureListener(new OnFailureListener() {
                                     @Override
                                     public void onFailure(@NonNull Exception e) {
-                                        // Failed to delete the item
                                         Toast.makeText(context, "Failed to delete item from basket", Toast.LENGTH_SHORT).show();
                                     }
                                 });
@@ -150,7 +149,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder>{
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                // Handle onCancelled
             }
         });
     }

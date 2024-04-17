@@ -149,7 +149,7 @@
         android:paddingTop="13dp"
         android:paddingRight="20dp"
         android:paddingBottom="13dp"
-        android:text="Admin Code"
+        android:hint="Admin Code"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"

@@ -61,7 +61,6 @@ public class Checkout extends AppCompatActivity {
                             Intent i = new Intent(Checkout.this, Discount.class);
                             startActivity(i);
                         }else {
-                            // Basket is empty, display a toast message
                             Toast.makeText(Checkout.this, "Your basket is empty", Toast.LENGTH_SHORT).show();
                         }
                     }
